@@ -1,0 +1,32 @@
+Backend:                                                                                    Done
+    
+    todos controllers/routes:                                                                  
+        -add                                                                                  y
+        -update                                                                               y
+        -get(of a specific id)                                                                y
+        -get(of a specific user id)                                                           y
+
+    final changes in the schema                                                               y
+
+    updating the points/todos(daily tasks)
+        -add the number of points in points list(on the basis of task completion)             y
+        -clear tasks(every day)                                                               y
+    
+    connect with mongoDB account                                                              y
+    
+    post-man stuff done.                                                                      y
+    
+    env stuff bug
+
+Frontend:
+    
+    
+    add a profile page                                                                         y
+    add a leaderboard page                                                                     y
+    add a todo page                                                                            y
+    add alerts / learn adding good alerts.                                                     
+
+
+
+
+
