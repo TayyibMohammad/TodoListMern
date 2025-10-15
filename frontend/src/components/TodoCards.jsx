@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import api from '../lib/axios'
 
 function TodoCards( {id, title, description, color, isDone} ) {
 
@@ -29,7 +30,8 @@ function TodoCards( {id, title, description, color, isDone} ) {
         'Content-Type': 'application/json'
       }
     }
-    const response = await axios.put(api_url, data, config)
+    // const response = await axios.put(api_url, data, config)
+    const response = await api.put(`/todos/${id}`, data, config)
 
     if(response.status === 200){
       setIsCompleted(!isCompleted)

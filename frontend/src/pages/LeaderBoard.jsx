@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import axios from 'axios'
+import api from '../lib/axios'
 
 function LeaderBoard() {
     const [users, setUsers] = useState([]);
@@ -19,7 +20,7 @@ function LeaderBoard() {
         }
 
         try {
-            const response = await axios.get(`${API_BASE_URL}/users/user`, config)
+            const response = await api.get('/users/user', config)
             setUser(response.data)
             console.log(response.data)
         } catch (error) {
@@ -36,7 +37,9 @@ function LeaderBoard() {
 
     const fetchUsers = useCallback(async () => {
         try {
-            const response = await axios.get(`${API_BASE_URL}/users`);
+            // const response = await axios.get(`${API_BASE_URL}/users`);
+            const response = await api.get('/users')
+            console.log(response)
             const fetchedUsers = response.data;
             
             const sortedUsers = fetchedUsers.sort((a, b) => {

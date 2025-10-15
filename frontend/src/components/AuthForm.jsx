@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import api from '../lib/axios'
 
 function AuthForm( {isSignIn} ) {
     const [name, setName] = useState('')
@@ -9,7 +10,6 @@ function AuthForm( {isSignIn} ) {
     const [password, setPassword] = useState('')
     const [bio, setBio] = useState('')
 
-    const API_BASE_URL = 'http://localhost:5000/api'
 
     const navigate = useNavigate();
 
@@ -24,9 +24,10 @@ function AuthForm( {isSignIn} ) {
                     bio:bio
                 }
 
-                const responsePromise=await axios.post(`${API_BASE_URL}/users/signup`, data)
+                const responsePromise=await api.post('/users/signup', data)
+                console.log(responsePromise.status)
                 
-                if(responsePromise.status===200){
+                if(responsePromise.status===201){
                     alert("account created successfully!")
                     navigate('/profile')
                     localStorage.setItem('token', responsePromise.data.token)
@@ -38,7 +39,7 @@ function AuthForm( {isSignIn} ) {
                     password:password
                 }
 
-                const responsePromise=await axios.post(`${API_BASE_URL}/users/signin`, data)
+                const responsePromise=await api.post('/users/signin', data)
 
                 if(responsePromise.status===200){
                     alert("Sign in successfully!")

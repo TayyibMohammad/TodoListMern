@@ -23,7 +23,6 @@ export async function getTodoByTodoId(req, res){
 export async function getTodosByUserId(req, res) {
     try{
         const user_id = req.user.id;
-        console.log("user id: ", user_id)
         const user=await User.findById(user_id, 'todos')
 
         if(!user){

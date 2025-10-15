@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import api from '../lib/axios'
 import TodoCards from '../components/TodoCards'
 
 const API_BASE_URL = 'http://localhost:5000/api'
@@ -31,7 +32,8 @@ export default function ProfilePage() {
         }
 
         try {
-            const response = await axios.get(`${API_BASE_URL}/users/user`, config)
+            // const response = await axios.get(`${API_BASE_URL}/users/user`, config)
+            const response = await api.get('/users/user', config)
             setUser(response.data)
             console.log(response.data)
         } catch (error) {
@@ -50,7 +52,8 @@ export default function ProfilePage() {
         }
 
         try {
-            const response = await axios.get(`${API_BASE_URL}/todos`, config)
+            // const response = await axios.get(`${API_BASE_URL}/todos`, config)
+            const response = await api.get('/todos', config)
             setTodos(response.data)
         } catch (error) {
             console.error("Fetch error", error)
@@ -84,7 +87,8 @@ export default function ProfilePage() {
         }
 
         try {
-            const response = await axios.post(`${API_BASE_URL}/todos/add`, data, config) 
+            // const response = await axios.post(`${API_BASE_URL}/todos/add`, data, config) 
+            const response = await api.post('/todos/add', data, config)
             alert("To Do list created successfully")
             
             fetchTodos()
